@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="store">
+  <head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  </head>
+  <body ng-controller="StoreController as store">
+    <div ng-repeat="product in store.products">
+      <div ng-hide="store.product.soldOut">
+        <h1> {{product.name}} </h1>
+        <h2> {{product.price}} </h2>
+        <button ng-show="store.product.canPurchase"> Add To Cart </button>
+      </div>
+      <section ng-controller="PanelController as panel">
+        <ul class="nav nav-pills">
+          <li ng-class=" active:panel.isSelected(1) ">
+            <a href ng-click="panel.selectStuff(1)">Description</a>
+          </li>
+          <li ng-class="{ active:panel.isSelected(2) }">
+            <a href ng-click="panel.selectStuff(2)">Reviews</a>
+          </li>
+          <li ng-class="{ active:panel.isSelected(3) }">
+            <a href ng-click="panel.selectStuff(3)">Specifications</a>
+          </li>
+        </ul>
+        <div ng-show="panel.isSelected(1)">
+          <p>{{product.description}}</p>
+        </div>
+        <div ng-show="panel.isSelected(2)">
+          <p>Here is a review!</p>
+        </div>
+        <div ng-show="panel.isSelected(3)">
+          <p>No specifications yet!</p>
+        </div>
+      </section>
+    </div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script type="text/javascript" src="toy.js"></script>
+  </body>
+</html>
