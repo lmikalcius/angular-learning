@@ -11,14 +11,38 @@
       price: 12.50,
       description: "Shiny and red language",
       canPurchase: true,
-      soldOut: false
+      soldOut: false,
+      reviews: [
+        {
+          stars: 5,
+          body: "I love this product!",
+          author: "Linas"
+        },
+        {
+          stars: 4,
+          body: "It be pretty good.",
+          author: "Kathy"
+        }
+      ]
     },
     {
       name: "Sapphire",
       price: 15.50,
       description: "Big and Cool",
       canPurchase: true,
-      soldOut: true
+      soldOut: true,
+      reviews: [
+        {
+          stars: 2,
+          body: "Not as cool as they say!",
+          author: "Linas"
+        },
+        {
+          stars: 4,
+          body: "It be alright.",
+          author: "James"
+        }
+      ]
     }
   ];
 
@@ -34,5 +58,18 @@
     };
 
   });
+
+  app.controller("ReviewController", function() {
+    this.review = {};
+
+    this.addReview = function(product) {
+      product.reviews.push(this.review);
+      this.review = {};
+    };
+
+  });
+
+
+
 
 })();
