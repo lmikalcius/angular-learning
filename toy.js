@@ -69,6 +69,14 @@
 
   });
 
+  app.directive("productTitle", function() {
+    return {
+      // restrict: "E",
+      restrict: "A",
+      temlateUrl: "product-title.html"
+    };
+  });
+
 
 
 
